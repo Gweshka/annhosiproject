@@ -1,4 +1,4 @@
-#!/home/emobilis/Desktop/HospitalSystem/final/bin/python3
+#!/home/emobilis/PycharmProjects/HospitalSystem/final/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/emobilis/Desktop/HospitalSystem/final
+set -gx VIRTUAL_ENV /home/emobilis/PycharmProjects/HospitalSystem/final
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH
