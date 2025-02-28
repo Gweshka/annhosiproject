@@ -1,5 +1,6 @@
-from django.shortcuts import render
-
+from django.db.models.signals import post_init
+from django.shortcuts import render, redirect
+from Hospitalapp.models import *
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
@@ -21,10 +22,28 @@ def doctors(request):
     return render(request, 'doctors.html')
 
 def appoint(request):
-    return render(request, 'appointment.html')
+    if request.method == "POST":
+        myappointment = Appointment(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            phone=request.POST['phone'],
+            date=request.POST['date'],
+            department=request.POST['department'],
+            doctor=request.POST['doctor'],
+            message=request.POST['message'])
+        myappointment.save()
+        return redirect ('/appointment')
+    else:
+        return render (request,'appointment.html')
 
 
-
-
-
-
+def contact(request):
+    if request.method == "POST":
+        callus= Contact(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            message=request.POST['message'])
+        callus.save()
+        return redirect ('/contact')
+    else:
+        return render (request,'contact.html')
