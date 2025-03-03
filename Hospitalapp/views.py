@@ -32,7 +32,8 @@ def appoint(request):
             doctor=request.POST['doctor'],
             message=request.POST['message'])
         myappointment.save()
-        return redirect ('/appointment')
+        return redirect ('/show')
+
     else:
         return render (request,'appointment.html')
 
@@ -47,3 +48,24 @@ def contact(request):
         return redirect ('/contact')
     else:
         return render (request,'contact.html')
+
+def show (request):
+    all = Appointment.objects.all()
+    return render(request,'show.html',{'all':all})
+
+def showcontact(request):
+    allcontact = contact.objects.all()
+    return render(request,'show.html',{'allcontact':allcontact})
+
+def delete(request,id):
+          deletedappointment= Appointment.objects.get(id=id)
+          deletedappointment.delete()
+          return redirect('/show')
+
+
+def deletecontact(request, id):
+    deletedcontact = contact.objects.get(id=id)
+    deletedcontact.delete()
+    return redirect('/show')
+
+

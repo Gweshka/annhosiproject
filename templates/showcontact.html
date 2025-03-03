@@ -1,0 +1,40 @@
+{% extends 'starter-page.html' %}
+<link rel="stylesheet" href="https://icons.getbootstrap.com/icons/pen/">
+{% load static %}
+{% block content %}
+
+    <h1 class="text-center">All Contacts</h1>
+   <div class="d-flex flex-wrap gap-3 container">
+
+    {% for x in allcontact %}
+
+        <div class="card w-30 p-3 shadow-lg">
+         <p class="text-primary fw-bold">{{ x.name }}</p>
+       <p> <strong>Email :</strong> {{ x.email }}</p>
+       <p> <strong>Phone:</strong> {{ x.phone }}</p>
+       <p><strong>Subject :</strong>{{ x.subject }}</p>
+       <p> <strong>Message:</strong> {{ x.Message }}</p>
+<p>
+    <a href="">
+        <i class="bi bi-pencil me-5">Edit</i>
+    </a>
+
+
+    <a href="/deletecontact/{{ x.id }}">
+
+        <i class="bi bi-trash text-danger">Delete</i>
+    </a>
+</p>
+
+
+
+
+
+
+
+        </div>
+ </div>
+
+
+
+{% endblock %}
